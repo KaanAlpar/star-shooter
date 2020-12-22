@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://fonts/font_54.tres" type="DynamicFont" id=1]
+[ext_resource path="res://fonts/font_48.tres" type="DynamicFont" id=2]
+[ext_resource path="res://ui/MainMenu.gd" type="Script" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.459259 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = -200.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_random = 0.5
+color_ramp = SubResource( 2 )
+
+[node name="MainMenu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_top = 0.339
+anchor_right = 1.0
+anchor_bottom = 0.339
+margin_left = 1.0
+margin_top = -60.44
+margin_right = -2.0
+margin_bottom = 53.56
+custom_fonts/font = ExtResource( 1 )
+text = "STAR SHOOTER"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 163.392
+margin_top = 437.316
+margin_right = 375.392
+margin_bottom = 582.316
+custom_constants/separation = 25
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+margin_right = 212.0
+margin_bottom = 60.0
+custom_fonts/font = ExtResource( 2 )
+text = "START"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 85.0
+margin_right = 212.0
+margin_bottom = 145.0
+custom_fonts/font = ExtResource( 2 )
+text = "QUIT"
+
+[node name="Stars" type="Particles2D" parent="."]
+position = Vector2( 280, 480 )
+amount = 50
+lifetime = 5.0
+preprocess = 5.0
+process_material = SubResource( 3 )
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

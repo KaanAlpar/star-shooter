@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://fonts/font_32.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/player-life.png" type="Texture" id=2]
+[ext_resource path="res://ui/HUD.gd" type="Script" id=3]
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLabel" type="Label" parent="."]
+margin_left = 10.0
+margin_top = 23.0
+margin_right = 518.0
+margin_bottom = 59.0
+custom_fonts/font = ExtResource( 1 )
+text = "SCORE: 999"
+
+[node name="Lives" type="TextureRect" parent="."]
+margin_left = 9.0
+margin_top = 68.0
+margin_right = 120.0
+margin_bottom = 94.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2

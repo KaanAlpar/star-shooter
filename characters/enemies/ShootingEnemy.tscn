@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://characters/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemy-green.png" type="Texture" id=2]
+[ext_resource path="res://characters/enemies/ShootingEnemy.gd" type="Script" id=3]
+[ext_resource path="res://assets/sfx_laser2.wav" type="AudioStream" id=4]
+
+[node name="ShootingEnemy" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+_speed = 75
+_health = 3
+_damage = 1
+_score = 100
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -30.8362, -22.1354, -30.5212, 15.3473, -7.21266, 31.4113, 8.53636, 31.7263, 30.585, 15.6622, 31.215, -21.1905, 13.576, -32.2148, 5.07158, -31.8998, 5.38655, -24.3403, -5.32278, -24.9702, -5.32278, -32.2148, -12.8823, -31.8998 )
+
+[node name="Muzzle" type="Position2D" parent="." index="2"]
+position = Vector2( 0, 48.919 )
+
+[node name="ShootTimer" type="Timer" parent="." index="3"]
+wait_time = 2.0
+autostart = true
+
+[node name="LaserSound" type="AudioStreamPlayer" parent="." index="5"]
+stream = ExtResource( 4 )
+[connection signal="timeout" from="ShootTimer" to="." method="_on_ShootTimer_timeout"]

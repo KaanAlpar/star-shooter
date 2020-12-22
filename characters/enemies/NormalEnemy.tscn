@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://characters/enemies/Enemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/enemy-black.png" type="Texture" id=2]
+
+[node name="NormalEnemy" instance=ExtResource( 1 )]
+_speed = 150
+_health = 2
+_damage = 1
+_score = 50
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+polygon = PoolVector2Array( -38.3502, -11.9012, -38.7037, -5.53729, -16.4299, 31.2323, -4.40903, 31.5858, -6.88391, 18.8579, 5.49046, 18.5043, 4.78336, 31.2323, 17.8648, 30.8787, 38.7245, -6.2444, 38.3709, -11.9012, 26.3501, -11.5477, 14.3293, -20.3865, 13.6222, -24.6292, -0.166397, -31.3467, -14.3085, -24.2756, -14.3085, -20.7401, -25.9758, -11.5477 )
